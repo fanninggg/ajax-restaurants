@@ -1,0 +1,17 @@
+reviewForm = document.getElementById('new_review')
+
+<% if @review.persisted? %>
+  // Get the review
+  newReview = '<p><%= @review.content %></p>'
+  // Access the list of reviews
+  reviews = document.getElementById('reviews')
+  // Insert the review
+  reviews.insertAdjacentHTML('beforeend', newReview)
+  // Find the element
+  // Clear it
+  reviewForm.innerHTML = "<%= j render 'reviews/form', restaurant: @restaurant, review: Review.new %>"
+<% else %>
+  // Get the form
+  // Rerender it
+  reviewForm.innerHTML = "<%= j render 'reviews/form', restaurant: @restaurant, review: @review %>"
+<% end %>
